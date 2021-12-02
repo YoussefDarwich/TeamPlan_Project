@@ -1,0 +1,7 @@
+{
+  "name": "TeamPlan_Project",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
