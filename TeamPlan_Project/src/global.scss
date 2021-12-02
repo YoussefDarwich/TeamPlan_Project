@@ -26,12 +26,26 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 
+:root{
+    --color1 : #F0F0F0;
+    --color2 : #EA8379;
+    --color3 : #769DB2;
+    --color4 : #BBC598;
+    --color5 : #A17F96;
+    --color6 : #A49998;
+    --color7 : #F0AF82;
+}
 @font-face {
     font-family: Mont;
     src: url(./resources/Montserrat/Montserrat-Regular.ttf);
+    src: url(./resources/Montserrat/Montserrat-Bold.ttf)
 }
   
 *{
     font-family: Mont;
-    // background-color: white;
 }
+
+body{
+    background-color: white;
+}
+

@@ -1,12 +1,17 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>My Navigation Bar</ion-title>
-  </ion-toolbar>
 
-  <ion-toolbar>
-    <ion-title>Subheader</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div id="maindiv">
+  <section id="PageTitle">
+
+    <h1>Team Plan</h1>
+    <div id="circle"></div>
+  </section>
+
+
+  <section id="Cards">
+    <app-card-component [taskTitle] = "title" [taskContent] = "content"></app-card-component>
+    <app-card-component [taskTitle] = "title" [taskContent] = "content"></app-card-component>
+    <app-card-component [taskTitle] = "title" [taskContent] = "content"></app-card-component>
+    <app-card-component [taskTitle] = "title" [taskContent] = "content"></app-card-component>
+  </section>
+
+</div>

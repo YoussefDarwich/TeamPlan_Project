@@ -7,6 +7,16 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  title:string = "Default string";
+  content:string = "Default content";
+  constructor() {
+    this.login();
+  }
+
+
+  login(){
+    this.title="Hello"
+
+  }
 
 }
