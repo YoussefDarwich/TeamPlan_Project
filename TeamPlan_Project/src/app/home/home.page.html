@@ -1,9 +1,14 @@
 
 <div id="maindiv">
   <section id="PageTitle">
-
     <h1>Team Plan</h1>
     <div id="circle"></div>
+  </section>
+
+  <section id="Projects">
+
+    <h2 *ngFor="let p of projects;">{{p}}</h2>
+  
   </section>
 
 
@@ -14,4 +19,10 @@
     <app-card-component [taskTitle] = "title" [taskContent] = "content"></app-card-component>
   </section>
 
+  <ion-button ></ion-button>
+
+
+  <section id="Members">
+    
+  </section>
 </div>
