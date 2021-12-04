@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppServicesService} from './../services/app-services.service'
+import { Task,AppServicesService} from './../services/app-services.service'
+
+interface test{
+  id:string;
+}
 
 @Component({
   selector: 'app-home',
@@ -9,24 +13,43 @@ import { AppServicesService} from './../services/app-services.service'
 })
 export class HomePage implements OnInit{
 
-  title:string = "Default string";
   content:string = "Default content";
-  projects:string[]=["hello","hello2","hello3","hello4","hello5"];
+  projects:string[]=[];
+  tasks:Task[] = [];
+  activeproj:string;
+
+
 
   constructor(private router: Router, private serv : AppServicesService) {
   }
 
   ngOnInit(){
-    this.login();
+
+    this.getAllTasks();
+    this.getAllProjects();
+
   }
 
 
-  login(){
-    this.serv.getAllCards().subscribe( res => {
-      console.log(res);
-      console.log(res["name"]);
+  getAllTasks(){
+    this.serv.getAllCards().subscribe((response:Task[]) => {
+      this.tasks=response;
+
     });
 
   }
+
+  getAllProjects(){
+    this.serv.getAllProjects().subscribe((response:string[]) => {
+      this.projects=response;
+      this.activeproj=this.projects[0]['title'];
+    });
+
+  }
+
+  addTask(){
+    this.router.navigate(['signin'])
+  }
+
 
 }

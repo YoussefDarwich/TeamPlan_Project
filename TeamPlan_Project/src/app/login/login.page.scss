@@ -1,0 +1,92 @@
+
+ion-content{
+    --padding-top: 50px;
+}
+
+#circles{
+
+    .circle{
+        width: 100px;
+        position: absolute;
+        height: 100px;
+        border-radius: 50%;
+    }
+
+    .circle1{
+        background-color: var(--myOrange);
+        top:-5%;
+        right: -5%;
+    }
+
+    .circle2{
+        background-color: var(--myBlue);
+        top:30%;
+        left:-25%;
+    }
+
+    .circle3{
+        background-color: var(--myGreen);
+        bottom: -10%;
+        right: 10%;
+    }
+}
+
+#welcome{
+    --background-color:rgba(0,0,0,0);
+    --color:var(--myPurple);
+    text-align: center;
+}
+
+form{
+    display: grid;
+    justify-items: center;
+
+}
+.textfield{
+    --background:var(--myWhite);
+    --color:black;
+
+    border-radius: 10px;
+    margin: 10px;
+
+}
+
+#login{
+    --color: white;
+    --background:var(--myOrange);
+    --border-radius:10px;
+    width: 120px;
+    height: 40px;
+    font-size: 1em;
+    margin-top: 20px;
+}
+
+.acc{
+    --color: var(--myPurple);
+    margin-top: 20px;
+
+
+    div{
+        display:grid;
+        justify-items: center;
+        margin: auto;
+    }
+
+    span{
+        font-size: 1em;
+        padding:10px 10px;
+        border-top: 2px solid var(--myPurple);
+    }
+
+    #register{
+        --color: white;
+        --background:var(--myOrange);
+        --border-radius:10px;
+        width: 100px;
+        height: 30px;
+        font-size: 0.75em;
+    }
+    
+}
+
+

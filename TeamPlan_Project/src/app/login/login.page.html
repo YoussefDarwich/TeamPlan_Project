@@ -1,0 +1,42 @@
+
+
+<ion-content>
+
+  <div id="circles">
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+    <div class="circle circle3"></div>
+  </div>
+
+  <ion-item lines="none" id="welcome">
+    <h1>Welcome to TeamPlan</h1>
+  </ion-item>
+
+  <form>
+    <ion-item class="textfield">
+      <ion-label color="light" position="floating" >Username</ion-label>
+      <ion-input ngModel name="Username"></ion-input>
+    </ion-item>
+
+
+
+    <ion-item class="textfield">
+      <ion-label color="light" position="floating" >Password</ion-label>
+      <ion-input ngModel name="Password"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-button id="login" type="submit">Log In</ion-button>
+    </ion-item>
+  </form>
+
+  <ion-item lines="none" class="acc">
+    <div>
+      <span>Don't have an account?</span>
+      <ion-button id="register">Sign Up</ion-button>
+
+    </div>
+
+  </ion-item>
+
+</ion-content>

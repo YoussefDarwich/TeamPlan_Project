@@ -27,13 +27,13 @@
 
 
 :root{
-    --color1 : #F0F0F0;
-    --color2 : #EA8379;
-    --color3 : #769DB2;
-    --color4 : #BBC598;
-    --color5 : #A17F96;
+    --myWhite : #F0F0F0;
+    --myRed : #EA8379;
+    --myBlue : #769DB2;
+    --myGreen : #BBC598;
+    --myPurple : #A17F96;
     --color6 : #A49998;
-    --color7 : #F0AF82;
+    --myOrange : #F0AF82;
 }
 @font-face {
     font-family: Mont;
@@ -43,10 +43,6 @@
   
 *{
     font-family: Mont;
-
 }
 
-body{
-    background-color: white;
-}
 
