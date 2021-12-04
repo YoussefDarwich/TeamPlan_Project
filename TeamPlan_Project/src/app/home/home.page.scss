@@ -48,6 +48,26 @@ app-card-component{
     }
 }
 
+ #Projects::-webkit-scrollbar {
+    height: 3px;
+  }
+
+  #Cards::-webkit-scrollbar{
+      width: 3px;
+  }
+
+#Cards::-webkit-scrollbar-track , #Projects::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+#Cards::-webkit-scrollbar-thumb , #Projects::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+
+#Projects::-webkit-scrollbar-thumb:active {
+    background: #555; 
+  }
+
 #Cards{
     display: flex;
     overflow-y: auto;

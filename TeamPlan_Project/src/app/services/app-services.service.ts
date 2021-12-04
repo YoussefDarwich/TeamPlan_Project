@@ -5,10 +5,16 @@ export interface Task{
   id:number,
   project_id:number,
   title:string,
-  assigned_id:number,
+  assigned_username:number,
   completed:number,
   description:string,
   due_date:string
+}
+
+export interface Project{
+  id:number,
+  admin_username:string,
+  title:string
 }
 @Injectable({
   providedIn: 'root'
@@ -19,11 +25,15 @@ export class AppServicesService {
 
   constructor(private http : HttpClient) { }
 
-  getAllCards(){
-     return this.http.get<Task[]>(this.url + "getAllTasks.php");
+  getAllCards(project_id){
+     return this.http.post<Task[]>(this.url + "getAllTasks.php",project_id);
   }
 
-  getAllProjects(){
-    return this.http.get<string[]>(this.url + "getAllProjects.php");
+  getAllProjects(user){
+    return this.http.post<Project[]>(this.url + "getAllProjects.php",user);
+  }
+
+  authenticate(creds){
+    return this.http.post(this.url + "login.php",creds);
   }
 }

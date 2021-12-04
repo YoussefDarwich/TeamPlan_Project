@@ -26,7 +26,7 @@ ion-content{
 
     .circle3{
         background-color: var(--myGreen);
-        bottom: -10%;
+        bottom: 1%;
         right: 10%;
     }
 }
@@ -39,6 +39,7 @@ ion-content{
 
 form{
     display: grid;
+    // grid-template-rows: auto;
     justify-items: center;
 
 }
@@ -49,6 +50,15 @@ form{
     border-radius: 10px;
     margin: 10px;
 
+}
+
+#authMessage{
+    height: fit-content;
+    span{
+        color:var(--myRed);
+        font-size: 13px;
+        height: fit-content;
+    }
 }
 
 #login{

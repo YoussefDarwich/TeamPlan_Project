@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Task,AppServicesService} from './../services/app-services.service'
+import { Project,Task,AppServicesService} from './../services/app-services.service'
+import { Storage } from '@ionic/storage';
 
 interface test{
   id:string;
@@ -14,41 +15,58 @@ interface test{
 export class HomePage implements OnInit{
 
   content:string = "Default content";
-  projects:string[]=[];
+  projects:Project[]=[];
   tasks:Task[] = [];
-  activeproj:string;
+
+  username:string;
+  activeproj:number;
 
 
 
-  constructor(private router: Router, private serv : AppServicesService) {
+  constructor(private storage:Storage,private router: Router, private serv : AppServicesService) {
   }
 
   ngOnInit(){
 
-    this.getAllTasks();
-    this.getAllProjects();
+    this.storage.get("username").then( (val)=>{
+      this.username=val;
 
-  }
-
-
-  getAllTasks(){
-    this.serv.getAllCards().subscribe((response:Task[]) => {
-      this.tasks=response;
+      this.getAllProjects(this.username);
 
     });
 
+
   }
 
-  getAllProjects(){
-    this.serv.getAllProjects().subscribe((response:string[]) => {
+  getAllProjects(user:string){
+    let jsonuser = {
+      'username' : user
+    }
+    this.serv.getAllProjects(jsonuser).subscribe((response) => {
       this.projects=response;
-      this.activeproj=this.projects[0]['title'];
+      this.activeproj=this.projects[0]['id'];
+
+      this.getAllTasks(this.activeproj);
     });
 
   }
+
+  getAllTasks(project_id:number){
+    let jsonproject = {
+      'project_id' : project_id
+    }
+    this.serv.getAllCards(jsonproject).subscribe((response) => {
+      this.tasks=response;
+    });
+
+  }
+
+
 
   addTask(){
-    this.router.navigate(['signin'])
+
+    this.router.navigate(['add-task']);
+    
   }
 
 

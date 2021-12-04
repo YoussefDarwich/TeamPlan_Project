@@ -1,6 +1,9 @@
 
-
+<ion-app>
+  
 <ion-content>
+
+  <ion-router-outlet></ion-router-outlet>
 
   <div id="circles">
     <div class="circle circle1"></div>
@@ -12,17 +15,20 @@
     <h1>Welcome to TeamPlan</h1>
   </ion-item>
 
-  <form>
+  <form #creds="ngForm" (ngSubmit)="onSubmit(creds)">
+
     <ion-item class="textfield">
       <ion-label color="light" position="floating" >Username</ion-label>
       <ion-input ngModel name="Username"></ion-input>
     </ion-item>
 
-
-
     <ion-item class="textfield">
       <ion-label color="light" position="floating" >Password</ion-label>
-      <ion-input ngModel name="Password"></ion-input>
+      <ion-input type="password" ngModel name="Password"></ion-input>
+    </ion-item>
+
+    <ion-item id="authMessage" *ngIf="showMessage" lines="none">
+      <span>Incorrect Username or Password.</span>
     </ion-item>
 
     <ion-item lines="none">
@@ -40,3 +46,5 @@
   </ion-item>
 
 </ion-content>
+
+</ion-app>

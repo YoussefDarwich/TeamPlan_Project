@@ -8,8 +8,8 @@
   <section id="Projects">
     <div *ngFor="let proj of projects">
 
-       <ion-button fill="clear" *ngIf="proj.title == activeproj" (click)="changeActiveProject()" ><h2 class="underlined">{{proj.title}}</h2></ion-button>
-       <ion-button  fill="clear" *ngIf="proj.title !=activeproj" (click)="changeActiveProject()"> <h2>{{proj.title}}</h2> </ion-button>
+       <ion-button fill="clear" *ngIf="proj.id == activeproj" (click)="changeActiveProject()" ><h2 class="underlined">{{proj.title}}</h2></ion-button>
+       <ion-button  fill="clear" *ngIf="proj.id !=activeproj" (click)="changeActiveProject()"> <h2>{{proj.title}}</h2> </ion-button>
 
     </div>
   </section>
