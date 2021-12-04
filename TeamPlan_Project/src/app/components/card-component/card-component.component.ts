@@ -8,7 +8,8 @@ import { Component,Input, OnInit } from '@angular/core';
 export class CardComponentComponent implements OnInit {
 
   @Input() taskTitle:string;
-  @Input() taskContent:string;
+  @Input() taskAssigned:string;
+  @Input() taskDate:string;
   constructor() { }
 
   ngOnInit() {}

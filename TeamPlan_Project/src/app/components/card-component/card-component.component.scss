@@ -1,9 +1,49 @@
 ion-card {
     --background: var(--color1) ;
     height: 150px;
+
+    display: grid;
+    justify-items: left;
+
   }
 
 ion-card-title{
     font-weight: bold;
     color:black;
+    font-size: 1em;
+}
+
+ion-card-header{
+  margin: 0px;
+  padding: 10px;
+}
+
+#name{
+  --color: black;
+  --background : var(--myPurple);
+  border-radius: 10px;
+  width: fit-content;
+  height: 30px;
+
+
+  span{
+    font-size: 10px;
+    height: 30px;
+
+  }
+}
+
+
+#due{
+  --color: black;
+  width: fit-content;
+  height: 30px;
+
+
+  span{
+    font-size: 5px;
+    height: 30px;
+    overflow-wrap: normal;
+
+  }
 }

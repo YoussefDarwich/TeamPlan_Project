@@ -1,17 +1,51 @@
 
-<div id="maindiv">
+<ion-app>
+  
+  <ion-content>
+    <div id="circles">
+      <div class="circle circle1"></div>
+    </div>
+
+    <ion-item lines="none" id="teamplan">
+      <h1>TeamPlan</h1>
+    </ion-item>
+
+    <ion-item lines="none" id="ProjectsItem">
+      <section id="Projects">
+        <div *ngFor="let proj of projects">
+    
+           <ion-button fill="clear" *ngIf="proj.id == activeproj" (click)="changeActiveProject()" ><h2 class="underlined">{{proj.title}}</h2></ion-button>
+           <ion-button  fill="clear" *ngIf="proj.id !=activeproj" (click)="changeActiveProject()"> <h2>{{proj.title}}</h2> </ion-button>
+    
+        </div>
+      </section>
+    </ion-item>
+
+  <ion-item lines="none">
+    <section id="Cards">
+      <app-card-component *ngFor="let task of tasks" [taskTitle] = "task.title" [taskAssigned] = "task.assigned_username" [taskDate] = "task.due_date"></app-card-component>
+      <app-card-component [taskTitle] = "'+'" [taskAssigned] = "'+'"></app-card-component>
+    </section>
+  </ion-item>
+
+
+
+  <ion-footer class="ion-no-border">
+    <ion-toolbar>
+      <ion-title></ion-title>
+    </ion-toolbar>
+  </ion-footer>
+
+  </ion-content>
+
+
+
+</ion-app>
+
+<!-- <div id="maindiv">
   <section id="PageTitle">
     <h1>Team Plan</h1>
     <div id="circle"></div>
-  </section>
-
-  <section id="Projects">
-    <div *ngFor="let proj of projects">
-
-       <ion-button fill="clear" *ngIf="proj.id == activeproj" (click)="changeActiveProject()" ><h2 class="underlined">{{proj.title}}</h2></ion-button>
-       <ion-button  fill="clear" *ngIf="proj.id !=activeproj" (click)="changeActiveProject()"> <h2>{{proj.title}}</h2> </ion-button>
-
-    </div>
   </section>
 
 
@@ -29,4 +63,4 @@
       <ion-card></ion-card>
     </div>
   </section>
-</div>
+</div> -->

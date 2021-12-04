@@ -1,10 +1,11 @@
 <ion-card>
   <ion-card-header>
-    <ion-card-subtitle>Task</ion-card-subtitle>
     <ion-card-title>{{taskTitle}}</ion-card-title>
   </ion-card-header>
 
   <ion-card-content>
-    {{taskContent}}
+    <ion-item lines="none" id="name"><span>{{taskAssigned}}</span></ion-item>
+    <ion-item lines="none" id="due"><span>{{taskDate}}</span></ion-item>
   </ion-card-content>
+
 </ion-card>

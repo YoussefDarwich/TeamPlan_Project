@@ -47,6 +47,7 @@ export class HomePage implements OnInit{
       this.activeproj=this.projects[0]['id'];
 
       this.getAllTasks(this.activeproj);
+      
     });
 
   }

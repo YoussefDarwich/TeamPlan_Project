@@ -6,49 +6,59 @@ app-card-component{
     width: 50%;
 }
 
-#maindiv{
-    display: grid;
-    height: 100%;
-    grid-auto-rows: auto;
-
+ion-content{
+    --padding-top: 30px;
 }
 
-#PageTitle{
+#circles{
 
-    width: 100%;
-    height: fit-content;
-    margin-left: 20px;
-    margin-top: 20px;
+    .circle{
+        width: 100px;
+        position: absolute;
+        height: 100px;
+        border-radius: 50%;
+    }
 
-
-    h2{
-        color: red;
-        font-size: 2em;
-        height: 1px;
-        
+    .circle1{
+        background-color: var(--myOrange);
+        top:-10%;
+        left: -5%;
     }
 
 
+}
 
+#teamplan{
+    --background-color:rgba(0,0,0,0);
+    --color:var(--myPurple);
+    text-align: center;
 }
 
 #Projects{
 
     display: flex;
-    gap:20px;
+    gap:5px;
     overflow-x: auto;
 
     width: 100%;
     height: fit-content;
-    margin-left: 20px;
     margin-top: 20px;
 
     h2{
          color: black;
+         font-size: 1em;
     }
 }
 
- #Projects::-webkit-scrollbar {
+
+
+#Cards{
+    display: flex;
+    overflow-y: auto;
+    flex-wrap: wrap;
+}
+
+#Projects::-webkit-scrollbar {
     height: 3px;
   }
 
@@ -67,12 +77,6 @@ app-card-component{
 #Projects::-webkit-scrollbar-thumb:active {
     background: #555; 
   }
-
-#Cards{
-    display: flex;
-    overflow-y: auto;
-    flex-wrap: wrap;
-}
 
 #Members{
     background-color: var(--color5);
