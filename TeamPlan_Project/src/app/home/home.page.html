@@ -26,7 +26,7 @@
 
   <ion-item lines="none">
     <section id="Cards">
-      <app-card-component (click)="prints()" tappable *ngFor="let task of tasks" [taskTitle] = "task.title" [taskAssigned] = "getNameFromUsername(task.assigned_username)" [colorIndex]="tasks.indexOf(task)%4" [taskDate] = "task.due_date"></app-card-component>
+      <app-card-component  *ngFor="let task of tasks" (click)="taskInfoRedirect(task.id)" tappable [taskTitle] = "task.title" [taskAssigned] = "getNameFromUsername(task.assigned_username)" [colorIndex]="tasks.indexOf(task)%4" [taskDate] = "task.due_date"></app-card-component>
       <ion-button size="large" color="dark" id="addbutton" (click)="addTaskRedirect()">+</ion-button>
     </section>
   </ion-item>
@@ -53,26 +53,3 @@
 
 
 </ion-app>
-
-<!-- <div id="maindiv">
-  <section id="PageTitle">
-    <h1>Team Plan</h1>
-    <div id="circle"></div>
-  </section>
-
-
-  <section id="Cards">
-    <app-card-component *ngFor="let task of tasks" [taskTitle] = "task.title" [taskContent] = "task.description"></app-card-component>
-    <app-card-component [taskTitle] = "'+'" [taskContent] = "'+'"></app-card-component>
-  </section>
-
-  <ion-button (click)="addTask()">
-    click me
-  </ion-button>
-
-  <section id="Members">
-    <div>
-      <ion-card></ion-card>
-    </div>
-  </section>
-</div> -->

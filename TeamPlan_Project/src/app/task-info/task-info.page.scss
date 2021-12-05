@@ -1,0 +1,45 @@
+ion-header{
+    --background:var(--myPurple);
+    --border-color:var(--myPurple);
+}
+
+ion-toolbar{
+    --background:var(--myPurple);
+    --padding-top: 100px;
+    --padding-bottom:10px;
+    --border-color:white;
+
+}
+
+ion-content{
+    --background:white;
+    --border-width:0px;
+}
+
+#desc{
+    --background:var(--myWhite);
+    --color:black;
+    --border-radius:10%;
+    display: grid;
+    width:fit-content;
+    height: fit-content;
+
+    margin: 20px 0px;
+
+    p{
+        align-self: center;
+        justify-self: center;
+    }
+}
+
+#uploadbutton{
+    --color: white;
+    --background:var(--myOrange);
+    --border-radius:10px;
+    width: 120px;
+    height: 40px;
+    font-size: 1em;
+    margin-top: 20px;
+
+    margin:auto;
+}

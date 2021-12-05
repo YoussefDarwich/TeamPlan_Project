@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'signin',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
+  {
+    path: 'task-info',
+    loadChildren: () => import('./task-info/task-info.module').then( m => m.TaskInfoPageModule)
+  },
 ];
 
 @NgModule({

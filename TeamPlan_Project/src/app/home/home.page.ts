@@ -71,7 +71,6 @@ export class HomePage implements OnInit{
     }
     this.serv.getAllMembers(jsonproject).subscribe((response) => {
       this.members=response;
-      console.log(this.members);
     });
   }
 
@@ -93,8 +92,15 @@ export class HomePage implements OnInit{
     return this.colors[index];
   }
 
-  prints(){
-    console.log("gwjnegr");
+  taskInfoRedirect(task_id){
+   var currenttask:Task;
+    for(let task of this.tasks){
+      if(task.id==task_id){
+        currenttask= task;
+      }
+    }
+    this.storage.set('currentTask', currenttask)
+    this.router.navigate(['task-info']);
   }
 
 

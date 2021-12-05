@@ -5,7 +5,7 @@ export interface Task{
   id:number,
   project_id:number,
   title:string,
-  assigned_username:number,
+  assigned_username:string,
   completed:number,
   description:string,
   due_date:string

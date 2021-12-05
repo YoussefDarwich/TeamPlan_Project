@@ -1,0 +1,25 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-back-button color="dark">back</ion-back-button>
+    </ion-buttons>
+    <ion-title >{{currentTask.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div id="maindiv">
+
+  <ion-item id="desc" lines="none">
+    <p>{{currentTask.description}}</p>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-input id="uploadbutton" type="file"></ion-input>
+  </ion-item>
+
+
+  </div>
+
+</ion-content>
