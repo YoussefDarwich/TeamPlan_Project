@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Project,Task,AppServicesService} from './../services/app-services.service'
+import { User,Project,Task,AppServicesService} from './../services/app-services.service'
 import { Storage } from '@ionic/storage';
 
-interface test{
-  id:string;
-}
 
 @Component({
   selector: 'app-home',
@@ -14,12 +11,15 @@ interface test{
 })
 export class HomePage implements OnInit{
 
-  content:string = "Default content";
   projects:Project[]=[];
   tasks:Task[] = [];
+  members:User[] = []
 
   username:string;
   activeproj:number;
+
+  colors:string[]=["memBlue","memYellow","memGreen","memRed"];
+  colorIndex=0;
 
 
 
@@ -32,6 +32,7 @@ export class HomePage implements OnInit{
       this.username=val;
 
       this.getAllProjects(this.username);
+
 
     });
 
@@ -47,6 +48,8 @@ export class HomePage implements OnInit{
       this.activeproj=this.projects[0]['id'];
 
       this.getAllTasks(this.activeproj);
+      this.getAllMembers(this.activeproj);
+
       
     });
 
@@ -62,13 +65,46 @@ export class HomePage implements OnInit{
 
   }
 
+  getAllMembers(project_id:number){
+    let jsonproject = {
+      'project_id' : project_id
+    }
+    this.serv.getAllMembers(jsonproject).subscribe((response) => {
+      this.members=response;
+      console.log(this.members);
+    });
+  }
 
+  getNameFromUsername(username){
+    for(let mem of this.members){
+      if(mem.username==username){
+        return mem.full_name;
+      }
+    }
+  }
 
-  addTask(){
+  addTaskRedirect(){
 
     this.router.navigate(['add-task']);
     
   }
+
+  getColor(index){
+    return this.colors[index];
+  }
+
+  prints(){
+    console.log("gwjnegr");
+  }
+
+
+  changeActiveProject(project_id:number){
+    this.activeproj=project_id;
+    this.getAllTasks(this.activeproj);
+
+  }
+
+
 
 
 }

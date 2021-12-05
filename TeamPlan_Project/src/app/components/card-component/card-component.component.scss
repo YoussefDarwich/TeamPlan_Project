@@ -2,8 +2,14 @@ ion-card {
     --background: var(--color1) ;
     height: 150px;
 
-    display: grid;
-    justify-items: left;
+    #maindiv{
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+  
+      
+    }
 
   }
 
@@ -11,6 +17,7 @@ ion-card-title{
     font-weight: bold;
     color:black;
     font-size: 1em;
+    margin-bottom: 20px;
 }
 
 ion-card-header{
@@ -18,32 +25,66 @@ ion-card-header{
   padding: 10px;
 }
 
+ion-card-content{
+  padding:0px;
+
+}
+
 #name{
   --color: black;
-  --background : var(--myPurple);
-  border-radius: 10px;
+  border-radius: 5px;
   width: fit-content;
-  height: 30px;
+  height: 25px;
+  display: flex;
 
 
   span{
     font-size: 10px;
-    height: 30px;
+    height: fit-content;
+    align-self: center;
 
   }
 }
 
+.nameYellow{
+  --background : var(--myYellow);
+}
+
+.nameBlue{
+  --background : var(--myBlue);
+}
+
+.nameRed{
+  --background : var(--myRed);
+}
+
+.nameGreen{
+  --background : var(--myGreen);
+}
+
+#complete{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px;
+}
 
 #due{
   --color: black;
   width: fit-content;
-  height: 30px;
+  font-size: 10px;
+  height: fit-content;
+  overflow-wrap: normal;
 
 
-  span{
-    font-size: 5px;
-    height: 30px;
-    overflow-wrap: normal;
+}
 
-  }
+#checkbox{
+  width: 10px;
+  height: 10px;
+  border: 1px solid black;
+  border-radius: 2px;
+
 }

@@ -16,6 +16,11 @@ export interface Project{
   admin_username:string,
   title:string
 }
+
+export interface User{
+  username:string,
+  full_name:string
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -32,6 +37,11 @@ export class AppServicesService {
   getAllProjects(user){
     return this.http.post<Project[]>(this.url + "getAllProjects.php",user);
   }
+
+  getAllMembers(project_id){
+    return this.http.post<User[]>(this.url + "getAllMembers.php",project_id);
+  }
+
 
   authenticate(creds){
     return this.http.post(this.url + "login.php",creds);

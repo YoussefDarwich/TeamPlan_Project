@@ -11,23 +11,24 @@
 <ion-button>Click me</ion-button>
 <ion-content>
 
-<form>
-  <ion-item>
-    <ion-label>Title</ion-label>
-    <ion-input position="floating"></ion-input>
-  </ion-item>
+  <form #info="ngForm" (ngSubmit)="onSubmit(info)">
 
-  <ion-item>
-    <ion-label>Title</ion-label>
-    <ion-input position="floating"></ion-input>
-  </ion-item>
+    <ion-item class="textfield">
+      <ion-label color="light" position="floating" >Task Title</ion-label>
+      <ion-input ngModel name="Username"></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label>Members</ion-label>
-    <ion-select interface="popover">
-      <ion-select-option >Hello</ion-select-option>
-    </ion-select>
-  </ion-item>
+    <ion-item class="textfield">
+      <ion-label color="light" position="floating" >Password</ion-label>
+      <ion-input type="password" ngModel name="Password"></ion-input>
+    </ion-item>
 
-</form>
+    <ion-item id="authMessage" *ngIf="showMessage" lines="none">
+      <span>Incorrect Username or Password.</span>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-button id="login" type="submit">Log In</ion-button>
+    </ion-item>
+  </form>
 </ion-content>

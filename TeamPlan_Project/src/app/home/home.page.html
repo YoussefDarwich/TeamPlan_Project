@@ -2,6 +2,7 @@
 <ion-app>
   
   <ion-content>
+
     <div id="circles">
       <div class="circle circle1"></div>
     </div>
@@ -10,12 +11,14 @@
       <h1>TeamPlan</h1>
     </ion-item>
 
+    <div id="maindiv">
+
     <ion-item lines="none" id="ProjectsItem">
       <section id="Projects">
         <div *ngFor="let proj of projects">
     
-           <ion-button fill="clear" *ngIf="proj.id == activeproj" (click)="changeActiveProject()" ><h2 class="underlined">{{proj.title}}</h2></ion-button>
-           <ion-button  fill="clear" *ngIf="proj.id !=activeproj" (click)="changeActiveProject()"> <h2>{{proj.title}}</h2> </ion-button>
+           <ion-button fill="clear" *ngIf="proj.id == activeproj" ><h2 class="underlined">{{proj.title}}</h2></ion-button>
+           <ion-button  fill="clear" *ngIf="proj.id !=activeproj" (click)="changeActiveProject(proj.id)"> <h2>{{proj.title}}</h2> </ion-button>
     
         </div>
       </section>
@@ -23,18 +26,27 @@
 
   <ion-item lines="none">
     <section id="Cards">
-      <app-card-component *ngFor="let task of tasks" [taskTitle] = "task.title" [taskAssigned] = "task.assigned_username" [taskDate] = "task.due_date"></app-card-component>
-      <app-card-component [taskTitle] = "'+'" [taskAssigned] = "'+'"></app-card-component>
+      <app-card-component (click)="prints()" tappable *ngFor="let task of tasks" [taskTitle] = "task.title" [taskAssigned] = "getNameFromUsername(task.assigned_username)" [colorIndex]="tasks.indexOf(task)%4" [taskDate] = "task.due_date"></app-card-component>
+      <ion-button size="large" color="dark" id="addbutton" (click)="addTaskRedirect()">+</ion-button>
     </section>
   </ion-item>
 
 
 
-  <ion-footer class="ion-no-border">
-    <ion-toolbar>
-      <ion-title></ion-title>
-    </ion-toolbar>
+  <ion-footer>
+    <div id="mainfooter">
+      <span>Project Members</span>
+      <div id="members">
+        <div *ngFor="let mem of members" class = "member">
+          <div class="icon {{getColor(members.indexOf(mem)%4)}}" ></div>
+          <span>{{mem.full_name}}</span>
+        </div>
+      </div>
+
+    </div>
   </ion-footer>
+
+  </div>
 
   </ion-content>
 
