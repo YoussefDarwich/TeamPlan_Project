@@ -46,4 +46,9 @@ export class AppServicesService {
   authenticate(creds){
     return this.http.post(this.url + "login.php",creds);
   }
+
+  addTask(taskInfo){
+    console.log(taskInfo);
+    return this.http.post(this.url + "addTask.php",taskInfo);
+  }
 }

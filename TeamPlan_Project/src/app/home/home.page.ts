@@ -34,8 +34,6 @@ export class HomePage implements OnInit{
       this.username=val;
 
       this.getAllProjects(this.username);
-
-
     });
 
 
@@ -73,7 +71,6 @@ export class HomePage implements OnInit{
     }
     this.serv.getAllMembers(jsonproject).subscribe((response) => {
       this.members=response;
-      console.log(jsonproject + " " + this.members);
     });
   }
 
@@ -97,7 +94,7 @@ export class HomePage implements OnInit{
   }
 
   addTaskRedirect(){
-
+    this.storage.set('project_id',this.activeproj.id);
     this.router.navigate(['add-task']);
     
   }

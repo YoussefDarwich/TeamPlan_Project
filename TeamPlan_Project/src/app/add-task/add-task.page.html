@@ -23,10 +23,7 @@
           <ion-item lines="none" class="textfield">
             <!-- <ion-label color="light" position="floating" >Assigned To</ion-label> -->
             <ion-select placeholder="Select Member" interface="action-sheet" ngModel name="AssignedTo">
-                <ion-select-option value="brown">Brown</ion-select-option>
-                <ion-select-option value="blonde">Blonde</ion-select-option>
-                <ion-select-option value="black">Black</ion-select-option>
-                <ion-select-option value="red">Red</ion-select-option>
+                <ion-select-option *ngFor="let mem of project_members" value="{{mem.username}}">{{mem.full_name}}</ion-select-option>
             </ion-select>
           </ion-item>
 
