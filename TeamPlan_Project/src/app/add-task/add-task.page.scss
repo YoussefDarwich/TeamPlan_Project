@@ -1,0 +1,54 @@
+ion-header{
+    --background:var(--myPurple);
+    --border-color:var(--myPurple);
+}
+
+ion-toolbar{
+    --background:var(--myPurple);
+    --padding-top: 20px;
+    --padding-bottom:10px;
+    --border-color:white;
+
+}
+
+ion-content{
+    --background:var(--myPurple);
+}
+
+#container{
+    background-color:white;
+    border-radius: 20px;
+    height:95%;
+    overflow-y: hidden;
+
+    width: 90%;
+    margin:auto;
+    padding: 10px;
+
+    h1{
+        color:var(--myPurple);
+    }
+
+
+    .textfield{
+        --background:var(--myWhite);
+        --color:black;
+    
+        border-radius: 10px;
+        margin: 10px;
+        height: fit-content;
+    
+    }
+
+
+
+    #addtask{
+        --color: white;
+        --background:var(--myOrange);
+        --border-radius:10px;
+        width: 100px;
+        height: 30px;
+        font-size: 0.75em;
+        margin:auto;
+    }
+}

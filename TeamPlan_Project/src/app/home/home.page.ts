@@ -16,7 +16,8 @@ export class HomePage implements OnInit{
   members:User[] = []
 
   username:string;
-  activeproj:number;
+  activeproj:Project;
+  isAssignedUser:boolean=false;
 
   colors:string[]=["memBlue","memYellow","memGreen","memRed"];
   colorIndex=0;
@@ -27,6 +28,7 @@ export class HomePage implements OnInit{
   }
 
   ngOnInit(){
+
 
     this.storage.get("username").then( (val)=>{
       this.username=val;
@@ -45,10 +47,10 @@ export class HomePage implements OnInit{
     }
     this.serv.getAllProjects(jsonuser).subscribe((response) => {
       this.projects=response;
-      this.activeproj=this.projects[0]['id'];
+      this.changeActiveProject(this.projects[0])
 
-      this.getAllTasks(this.activeproj);
-      this.getAllMembers(this.activeproj);
+      this.getAllTasks(this.activeproj.id);
+      this.getAllMembers(this.activeproj.id);
 
       
     });
@@ -71,6 +73,7 @@ export class HomePage implements OnInit{
     }
     this.serv.getAllMembers(jsonproject).subscribe((response) => {
       this.members=response;
+      console.log(jsonproject + " " + this.members);
     });
   }
 
@@ -80,6 +83,17 @@ export class HomePage implements OnInit{
         return mem.full_name;
       }
     }
+  }
+
+  setIsAssigned(){
+    this.storage.get("username").then((val)=>{
+      if(val==this.activeproj.admin_username){
+        this.isAssignedUser=true;
+      }
+      else{
+        this.isAssignedUser=false;
+      }
+    });
   }
 
   addTaskRedirect(){
@@ -104,9 +118,11 @@ export class HomePage implements OnInit{
   }
 
 
-  changeActiveProject(project_id:number){
-    this.activeproj=project_id;
-    this.getAllTasks(this.activeproj);
+  changeActiveProject(project:Project){
+    this.activeproj=project;
+    this.setIsAssigned();
+    this.getAllTasks(this.activeproj.id);
+    this.getAllMembers(this.activeproj.id);
 
   }
 

@@ -1,34 +1,55 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons>
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>aaaaaaaaa</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons>
+        <ion-back-button color="dark">back</ion-back-button>
+      </ion-buttons>
+      <ion-title ></ion-title>
+    </ion-toolbar>
+  </ion-header>
 
+  <ion-content>
 
-<ion-button>Click me</ion-button>
-<ion-content>
+    <div id="container">
 
-  <form #info="ngForm" (ngSubmit)="onSubmit(info)">
+        <h1>Add a new Task</h1>
 
-    <ion-item class="textfield">
-      <ion-label color="light" position="floating" >Task Title</ion-label>
-      <ion-input ngModel name="Username"></ion-input>
-    </ion-item>
+        <form #taskInfo="ngForm" (ngSubmit)="onSubmit(taskInfo)">
 
-    <ion-item class="textfield">
-      <ion-label color="light" position="floating" >Password</ion-label>
-      <ion-input type="password" ngModel name="Password"></ion-input>
-    </ion-item>
+        <ion-item lines="none" class="textfield">
+            <ion-label color="light" position="floating" >Title</ion-label>
+            <ion-input type="text" ngModel name="Title"></ion-input>
+          </ion-item>
 
-    <ion-item id="authMessage" *ngIf="showMessage" lines="none">
-      <span>Incorrect Username or Password.</span>
-    </ion-item>
+          <ion-item lines="none" class="textfield">
+            <!-- <ion-label color="light" position="floating" >Assigned To</ion-label> -->
+            <ion-select placeholder="Select Member" interface="action-sheet" ngModel name="AssignedTo">
+                <ion-select-option value="brown">Brown</ion-select-option>
+                <ion-select-option value="blonde">Blonde</ion-select-option>
+                <ion-select-option value="black">Black</ion-select-option>
+                <ion-select-option value="red">Red</ion-select-option>
+            </ion-select>
+          </ion-item>
 
-    <ion-item lines="none">
-      <ion-button id="login" type="submit">Log In</ion-button>
-    </ion-item>
-  </form>
-</ion-content>
+          <ion-item lines="none" class="textfield">
+            <ion-label color="light" position="stacked" >Due Date</ion-label>
+            <ion-input type="date" ngModel name="DueDate"></ion-input>
+          </ion-item>
+
+          <ion-item id="desc" class="textfield">
+            <ion-label color="light" position="stacked" >Description</ion-label>
+            <section id="desc">
+                <ion-textarea id="desc" ngModel name="Description"></ion-textarea>
+            </section>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-button id="addtask" type="ngSubmit">Add Task</ion-button>
+          </ion-item>
+
+          </form>
+
+    </div>
+
+  
+  </ion-content>
+  

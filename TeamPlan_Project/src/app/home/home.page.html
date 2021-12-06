@@ -1,5 +1,7 @@
 
 <ion-app>
+
+
   
   <ion-content>
 
@@ -17,8 +19,8 @@
       <section id="Projects">
         <div *ngFor="let proj of projects">
     
-           <ion-button fill="clear" *ngIf="proj.id == activeproj" ><h2 class="underlined">{{proj.title}}</h2></ion-button>
-           <ion-button  fill="clear" *ngIf="proj.id !=activeproj" (click)="changeActiveProject(proj.id)"> <h2>{{proj.title}}</h2> </ion-button>
+           <ion-button fill="clear" *ngIf="proj === activeproj" ><h2 class="underlined">{{proj.title}}</h2></ion-button>
+           <ion-button  fill="clear" *ngIf="proj != activeproj" (click)="changeActiveProject(proj)"> <h2>{{proj.title}}</h2> </ion-button>
     
         </div>
       </section>
@@ -27,7 +29,7 @@
   <ion-item lines="none">
     <section id="Cards">
       <app-card-component  *ngFor="let task of tasks" (click)="taskInfoRedirect(task.id)" tappable [taskTitle] = "task.title" [taskAssigned] = "getNameFromUsername(task.assigned_username)" [colorIndex]="tasks.indexOf(task)%4" [taskDate] = "task.due_date"></app-card-component>
-      <ion-button size="large" color="dark" id="addbutton" (click)="addTaskRedirect()">+</ion-button>
+      <ion-button *ngIf="isAssignedUser" size="large" color="dark" id="addbutton" (click)="addTaskRedirect()">+</ion-button>
     </section>
   </ion-item>
 

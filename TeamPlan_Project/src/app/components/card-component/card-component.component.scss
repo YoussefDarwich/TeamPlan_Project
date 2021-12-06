@@ -23,6 +23,8 @@ ion-card-title{
 ion-card-header{
   margin: 0px;
   padding: 10px;
+
+  display: grid;
 }
 
 ion-card-content{
@@ -32,16 +34,18 @@ ion-card-content{
 
 #name{
   --color: black;
+  --padding-start:6px;
   border-radius: 5px;
-  width: fit-content;
+  width: 100%;
   height: 25px;
-  display: flex;
+  display: grid;
+
+  overflow:hidden;
 
 
   span{
     font-size: 10px;
     height: fit-content;
-    align-self: center;
 
   }
 }

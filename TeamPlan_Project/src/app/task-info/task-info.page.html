@@ -9,17 +9,44 @@
 
 <ion-content>
 
-  <div id="maindiv">
+  
+  <div id="circles">
+    <div class="circle circle1"></div>
+  </div>
+
+
+  <div id="container">
+
+  <div id="maindiv" *ngIf="!isCompleted">
 
   <ion-item id="desc" lines="none">
     <p>{{currentTask.description}}</p>
   </ion-item>
 
-  <ion-item lines="none">
-    <ion-input id="uploadbutton" type="file"></ion-input>
-  </ion-item>
+  <form #file="ngForm" (ngSubmit)="onSubmit(file)">
+    
+    <ion-button *ngIf="isAssignedUser" class="uploadbutton">
+      <ion-input class="uploadbutton" ngModel name="file_upload" type="file">
+      </ion-input>
+    </ion-button>
+    <ion-button *ngIf="!isAssignedUser" class="uploadbutton" disabled>
+    </ion-button>
 
+    
+    <ion-button *ngIf="isAssignedUser" class="uploadbutton" type="ngSubmit">Upload</ion-button>
+    <ion-button *ngIf="!isAssignedUser" class="uploadbutton" disabled>Upload</ion-button>
+    
+  </form>
+  </div>
+
+  <div id="completed" *ngIf="isCompleted">
+
+    <h1>Task Completed</h1>
+    <img src="./../../assets/icon/checkmark.png">
+    <ion-button class="downloadbutton">Download</ion-button>
 
   </div>
+
+</div>
 
 </ion-content>
