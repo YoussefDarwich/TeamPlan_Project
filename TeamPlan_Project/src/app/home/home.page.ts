@@ -31,7 +31,6 @@ export class HomePage implements OnInit{
 
   ngOnInit(){
 
-    console.log("hello from home");
     setTimeout(()=>
       this.storage.get("username").then( (val)=>{
         this.username=val;
@@ -91,10 +90,12 @@ export class HomePage implements OnInit{
     }
     this.serv.getAllProjects(jsonuser).subscribe((response) => {
       this.projects=response;
-      this.changeActiveProject(this.projects[0])
+      if(this.projects.length!=0){
+        this.changeActiveProject(this.projects[0])
 
-      this.getAllTasks(this.activeproj.id);
-      this.getAllMembers(this.activeproj.id);
+        this.getAllTasks(this.activeproj.id);
+        this.getAllMembers(this.activeproj.id);
+      }
 
       
     });

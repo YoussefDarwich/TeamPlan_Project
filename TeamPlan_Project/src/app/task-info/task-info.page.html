@@ -24,13 +24,11 @@
   </ion-item>
 
   <form #file="ngForm" (ngSubmit)="onSubmit(file)" enctype="multipart/form-data">
-    
-    <ion-button *ngIf="isAssignedUser" class="uploadbutton">
-      <ion-input class="uploadbutton" ngModel name="file_upload" type="file">
-      </ion-input>
-    </ion-button>
-    <ion-button *ngIf="!isAssignedUser" class="uploadbutton" disabled>
-    </ion-button>
+
+    <ion-item lines="none">
+      <ion-input class="textfield" ngModel name="link_upload" type="text"></ion-input>
+    </ion-item>
+
 
     
     <ion-button *ngIf="isAssignedUser" class="uploadbutton" type="ngSubmit">Upload</ion-button>
@@ -44,7 +42,7 @@
 
     <h1>Task Completed</h1>
     <img src="./../../assets/icon/checkmark.png">
-    <ion-button *ngIf="username == currentProjectAdmin" class="downloadbutton">Download</ion-button>
+    <span *ngIf="username == currentProjectAdmin" id="link">{{currentTask.link}}</span>
 
   </div>
 
@@ -55,8 +53,9 @@
 
   </div>
 
-  <ion-button *ngIf="username == currentProjectAdmin" class="uploadbutton" (click)="deleteTask()">Delete</ion-button>
-
+  <div id="deletediv">
+    <ion-button *ngIf="username == currentProjectAdmin" id="deletebutton" class="uploadbutton" (click)="deleteTask()">Delete</ion-button>
+  </div>
 </div>
 
 </ion-content>

@@ -10,7 +10,7 @@ import { Storage } from '@ionic/storage';
 })
 export class LoginPage implements OnInit {
   
-  private auth:number;
+  private auth:string;
   showMessage:boolean = false;
 
   constructor(private storage:Storage,private router: Router, private serv : AppServicesService) { }
@@ -26,13 +26,13 @@ export class LoginPage implements OnInit {
     }
 
     this.serv.authenticate(jsoncreds).subscribe(res=>{
-      this.auth =res['isFound'];
- 
-      if(this.auth == 1){
+      this.auth =res['success_status'];
+
+      if(this.auth == 'success'){
         this.storage.set('username',jsoncreds.username);
         this.router.navigate(['home']);
       }
-      if(this.auth == 0){
+      else{
         this.showMessage=true;
 
       }

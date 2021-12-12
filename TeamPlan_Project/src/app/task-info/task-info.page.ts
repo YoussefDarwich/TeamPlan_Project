@@ -11,7 +11,7 @@ import {FileTransfer , FileTransferObject, FileUploadOptions} from '@ionic-nativ
 })
 export class TaskInfoPage implements OnInit {
 
-  currentTask:Task={'title': "", 'project_id' : 0 , 'id' : 0 , 'due_date': "" , 'description' : "",'completed':0, 'assigned_username': ""};
+  currentTask:Task={'title': "", 'project_id' : 0 , 'id' : 0 , 'due_date': "" , 'description' : "",'completed':0, 'assigned_username': "",'link':""};
   currentProjectAdmin:string="";
   isAssignedUser:boolean=false;
   isCompleted:number=0;
@@ -71,10 +71,22 @@ export class TaskInfoPage implements OnInit {
     }
   }
   onSubmit(file){
-    const url = file.value.file_upload;
-    console.log(file.value)
-    // let fileData = new FormData();
-    // fileData.append('file',file,file.name);
+    const url = file.value.link_upload;
+
+    let jsonlink ={
+      'link' : url,
+      'task_id' : this.currentTask.id
+    }
+
+    this.serv.uploadFile(jsonlink).subscribe(res=>{
+      if(res['success_status'] == 'success'){
+        this.router.navigate(['home']);
+      }
+      else{
+        console.log("An error has occured.")
+
+      }
+    });
     
   }
 

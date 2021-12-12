@@ -8,7 +8,8 @@ export interface Task{
   assigned_username:string,
   completed:number,
   description:string,
-  due_date:string
+  due_date:string,
+  link:string
 }
 
 export interface Project{
@@ -48,6 +49,10 @@ export class AppServicesService {
 
   register(creds){
     return this.http.post<JSON>(this.url + "signup.php",creds);
+  }
+
+  uploadFile(info){
+    return this.http.post<JSON>(this.url + "uploadFile.php",info);
   }
 
   deleteTask(task_id){
