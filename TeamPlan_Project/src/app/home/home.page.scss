@@ -31,10 +31,27 @@ ion-content{
 
 }
 
+#titleflex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+}
+
 #teamplan{
     --background-color:rgba(0,0,0,0);
     --color:var(--myPurple);
     text-align: center;
+    justify-self: center;
+}
+
+#logout{
+    --color: white;
+    --background:var(--myOrange);
+    --border-radius:10px;
+    width: 70px;
+    height: 30px;
+    font-size: 0.7em;
 }
 
 #Projects{
@@ -87,6 +104,7 @@ ion-content{
   }
 
 #addbutton{
+    --border-radius:6px;
     align-self: center;
     margin:auto;
     // width: 100;
@@ -133,6 +151,22 @@ ion-footer{
             width: 30px;
             height: 30px;
             border-radius: 20%;
+        }
+
+        .addicon{
+            width: 30px;
+            height: 30px;
+            border-radius: 20%;
+            background-color: var(--myWhite);
+            color: black;
+            
+            display: grid;
+            justify-content: center;
+            align-items: center;
+
+            span{
+                font-size: 20px;
+            }
         }
         .memBlue{
             background-color: var(--myBlue);

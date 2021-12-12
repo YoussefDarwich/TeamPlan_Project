@@ -1,0 +1,17 @@
+#addMember{
+        --color: white;
+        --background:var(--myOrange);
+        --border-radius:5px;
+        width: 100px;
+        height: 30px;
+        font-size: 0.6em;
+}
+
+.textfield{
+    --background:var(--myWhite);
+    --color:black;
+
+    border-radius: 10px;
+    margin: 10px;
+
+}

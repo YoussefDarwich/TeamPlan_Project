@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User,Project,Task,AppServicesService} from './../services/app-services.service'
 import { Storage } from '@ionic/storage';
-
+import { PopoverController } from '@ionic/angular';
+import { PopoverComponent } from '../components/popover/popover.component'
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,7 @@ export class HomePage implements OnInit{
   members:User[] = []
 
   username:string;
-  activeproj:Project;
+  activeproj:Project = {id : -1 , admin_username : "" , title : ""};
   isAssignedUser:boolean=false;
 
   colors:string[]=["memBlue","memYellow","memGreen","memRed"];
@@ -24,17 +25,46 @@ export class HomePage implements OnInit{
 
 
 
-  constructor(private storage:Storage,private router: Router, private serv : AppServicesService) {
+  constructor(private  popoverController: PopoverController , private storage:Storage,private router: Router, private serv : AppServicesService) {
+  }
+
+  // taken from the ionic documentation to create a popover
+  async presentPopover(ev: any) {
+    
+    const popover = await this.popoverController.create({
+      component: PopoverComponent,
+      event: ev,
+      translucent: true,
+    });
+    await popover.present();
+    // popover.addEventListener('click',()=>{
+    //   console.log("clickeddd");
+    // });
+    // popover.addEventListener('usernameOutput',($event)=>{
+    //   console.log("Value from home" + $event);
+    // })
+
+    // popover.addEventListener(,()=>{
+    //   console.log("test");
+    // })
+
+    return popover.onDidDismiss().then(
+      (data: any) => {
+        if (data) {
+          console.log(data);
+          // trigger here the method dependind on the popover response
+        }
+      });
   }
 
   ngOnInit(){
 
+    setTimeout(()=>
+      this.storage.get("username").then( (val)=>{
+        this.username=val;
 
-    this.storage.get("username").then( (val)=>{
-      this.username=val;
-
-      this.getAllProjects(this.username);
-    });
+        this.getAllProjects(this.username);
+      }),200);
 
 
   }
@@ -76,6 +106,7 @@ export class HomePage implements OnInit{
 
   getNameFromUsername(username){
     for(let mem of this.members){
+
       if(mem.username==username){
         return mem.full_name;
       }
@@ -122,6 +153,21 @@ export class HomePage implements OnInit{
     this.getAllMembers(this.activeproj.id);
 
   }
+
+  addMember(){
+
+  }
+
+
+  logOut(){
+    this.storage.remove('username');
+    this.storage.get("username").then((val)=>{
+      console.log(val);
+    });
+    this.router.navigate(['signin']);
+  }
+
+  
 
 
 

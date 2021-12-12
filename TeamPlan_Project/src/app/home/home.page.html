@@ -9,9 +9,15 @@
       <div class="circle circle1"></div>
     </div>
 
-    <ion-item lines="none" id="teamplan">
-      <h1>TeamPlan</h1>
-    </ion-item>
+    <div id="titleflex">
+      <ion-item lines="none" id="teamplan">
+        <h1>TeamPlan</h1>
+      </ion-item>
+
+      <ion-item lines="none" id="teamplan">
+        <ion-button id="logout" (click)="logOut()">Log out</ion-button>
+      </ion-item>
+    </div>
 
     <div id="maindiv">
 
@@ -43,6 +49,11 @@
           <div class="icon {{getColor(members.indexOf(mem)%4)}}" ></div>
           <span>{{mem.full_name}}</span>
         </div>
+        <div *ngIf="username==activeproj.admin_username && members.length<7" class= "member">
+          <div class="addicon" (click)="presentPopover()"><span>+</span></div>
+        
+        </div>
+        
       </div>
 
     </div>
