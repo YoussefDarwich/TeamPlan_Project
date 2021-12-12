@@ -2,13 +2,13 @@
 
 
     <ion-item class="textfield">
-      <ion-label color="light" position="floating" >Username</ion-label>
+      <ion-label color="light" position="floating" >{{field}}</ion-label>
       <ion-input #username name="Username"></ion-input>
     </ion-item>
 
 
     <ion-item lines="none">
-      <ion-button id="addMember" (click)="sendUsername()">Add member</ion-button>
+      <ion-button id="addMember" (click)="sendUsername()">Add {{type}}</ion-button>
     </ion-item>
 
 </ion-content>

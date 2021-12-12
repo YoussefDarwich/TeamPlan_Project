@@ -2,14 +2,16 @@
 
   <div id="maindiv">
   <ion-card-header>
-    <ion-card-title>{{taskTitle}}</ion-card-title>
-    <ion-item lines="none" id="name" class="{{getColor()}}"><span>{{taskAssigned}}</span></ion-item>
+    <ion-card-title>{{task.title}}</ion-card-title>
+    <ion-item lines="none" id="name" class="{{getColor()}}"><span>{{assigned_name}}</span></ion-item>
   </ion-card-header>
 
   <ion-card-content>
     <div id="complete">
-      <span id="due">{{taskDate}}</span>
-      <div id="checkbox"></div>
+      <span id="due">{{task.due_date}}</span>
+      <div *ngIf="task.completed==0" class="checkboxdefault"></div>
+      <div *ngIf="task.completed==1" class="checkboxcompleted"></div>
+      <div *ngIf="task.completed==-1" class="checkboxoverdue"></div>
     </div>
   </ion-card-content>
 

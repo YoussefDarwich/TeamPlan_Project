@@ -1,0 +1,83 @@
+ion-header{
+    --background:var(--myPurple);
+    --border-color:var(--myPurple);
+}
+
+ion-toolbar{
+    --background:var(--myPurple);
+    --border-color:white;
+
+}
+
+ion-title{
+    padding-right: 40px;
+    padding-bottom: 10px;
+    text-align: left;
+}
+
+ion-content{
+    --padding-top: 20px;
+    --background:white;
+}
+
+#circles{
+
+    .circle{
+        width: 100px;
+        position: absolute;
+        height: 100px;
+        border-radius: 50%;
+    }
+
+    .circle1{
+        background-color: var(--myOrange);
+        top:20%;
+        right: -5%;
+    }
+
+    .circle2{
+        background-color: var(--myBlue);
+        top:-5%;
+        left:-25%;
+    }
+
+    .circle3{
+        background-color: var(--myGreen);
+        bottom: 1%;
+        left: 10%;
+    }
+}
+
+form{
+    display: grid;
+    // grid-template-rows: auto;
+    justify-items: center;
+
+}
+.textfield{
+    --background:var(--myWhite);
+    --color:black;
+
+    border-radius: 10px;
+    margin: 10px;
+
+}
+
+#authMessage{
+    height: fit-content;
+    span{
+        color:var(--myRed);
+        font-size: 13px;
+        height: fit-content;
+    }
+}
+
+#signup{
+    --color: white;
+    --background:var(--myOrange);
+    --border-radius:10px;
+    width: 120px;
+    height: 40px;
+    font-size: 1em;
+    margin-top: 20px;
+}

@@ -18,6 +18,8 @@ ion-card-title{
     color:black;
     font-size: 1em;
     margin-bottom: 20px;
+    overflow:hidden;
+    height: 50%;
 }
 
 ion-card-header{
@@ -86,10 +88,28 @@ ion-card-content{
 
 }
 
-#checkbox{
+.checkboxdefault{
   width: 10px;
   height: 10px;
   border: 1px solid black;
   border-radius: 2px;
+}
 
+.checkboxoverdue{
+  width: 15px;
+  height: 15px;
+  // border: 1px solid red;
+  background-image: url(../../../assets/icon/overdue.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+
+}
+
+.checkboxcompleted{
+  width: 15px;
+  height: 15px;
+  // border: 1px solid green;
+  background-image: url(../../../assets/icon/checkmark.png);
+  background-size: contain;
+  background-repeat: no-repeat;
 }

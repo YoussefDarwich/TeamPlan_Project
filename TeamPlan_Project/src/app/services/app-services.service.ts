@@ -42,13 +42,27 @@ export class AppServicesService {
     return this.http.post<User[]>(this.url + "getAllMembers.php",project_id);
   }
 
-
   authenticate(creds){
     return this.http.post(this.url + "login.php",creds);
   }
 
+  register(creds){
+    return this.http.post<JSON>(this.url + "signup.php",creds);
+  }
+
+  deleteTask(task_id){
+    return this.http.post<JSON>(this.url + "deleteTask.php",task_id);
+  }
+
   addTask(taskInfo){
-    console.log(taskInfo);
     return this.http.post(this.url + "addTask.php",taskInfo);
+  }
+
+  addMember(username){
+    return this.http.post(this.url + "addMember.php",username);
+  }
+
+  addProject(info){
+    return this.http.post(this.url + "addProject.php",info);
   }
 }

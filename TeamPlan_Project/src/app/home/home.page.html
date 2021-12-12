@@ -23,8 +23,8 @@
 
     <ion-item lines="none" id="ProjectsItem">
       <section id="Projects">
+        <div id="addproj" class="addicon" (click)="projectPopover()"><span>+</span></div>
         <div *ngFor="let proj of projects">
-    
            <ion-button fill="clear" *ngIf="proj === activeproj" ><h2 class="underlined">{{proj.title}}</h2></ion-button>
            <ion-button  fill="clear" *ngIf="proj != activeproj" (click)="changeActiveProject(proj)"> <h2>{{proj.title}}</h2> </ion-button>
     
@@ -34,7 +34,7 @@
 
   <ion-item lines="none">
     <section id="Cards">
-      <app-card-component  *ngFor="let task of tasks" (click)="taskInfoRedirect(task.id)" tappable [taskTitle] = "task.title" [taskAssigned] = "getNameFromUsername(task.assigned_username)" [colorIndex]="tasks.indexOf(task)%4" [taskDate] = "task.due_date"></app-card-component>
+      <app-card-component  *ngFor="let task of tasks" (click)="taskInfoRedirect(task.id)" tappable [task]= "task" [assigned_name] = "getNameFromUsername(task.assigned_username)" [colorIndex]="tasks.indexOf(task)%4"></app-card-component>
       <ion-button *ngIf="isAssignedUser" size="large" color="dark" id="addbutton" (click)="addTaskRedirect()">+</ion-button>
     </section>
   </ion-item>
@@ -50,7 +50,7 @@
           <span>{{mem.full_name}}</span>
         </div>
         <div *ngIf="username==activeproj.admin_username && members.length<7" class= "member">
-          <div class="addicon" (click)="presentPopover()"><span>+</span></div>
+          <div class="addicon" (click)="memberPopover()"><span>+</span></div>
         
         </div>
         

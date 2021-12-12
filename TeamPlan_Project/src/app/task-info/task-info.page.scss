@@ -7,8 +7,14 @@ ion-toolbar{
     --background:var(--myPurple);
     --padding-top: 80px;
     --padding-bottom:10px;
+
     --border-color:white;
 
+}
+
+ion-title{
+    padding-right: 40px;
+    text-align: left;
 }
 
 ion-content{

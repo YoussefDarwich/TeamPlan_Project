@@ -1,4 +1,5 @@
 import { Component,Input, OnInit } from '@angular/core';
+import { Task } from '../../services/app-services.service'
 
 @Component({
   selector: 'app-card-component',
@@ -7,9 +8,9 @@ import { Component,Input, OnInit } from '@angular/core';
 })
 export class CardComponentComponent implements OnInit {
 
-  @Input() taskTitle:string;
-  @Input() taskAssigned:string;
-  @Input() taskDate:string;
+
+  @Input() task:Task
+  @Input() assigned_name:string;
 
   colors:string[]=["nameBlue","nameYellow","nameGreen","nameRed"];
   @Input() colorIndex:number=0;

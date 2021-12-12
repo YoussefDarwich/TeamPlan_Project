@@ -39,4 +39,8 @@ export class LoginPage implements OnInit {
     });
   }
 
+  redirectToSignup(){
+    this.router.navigate(['signup']);
+  }
+
 }

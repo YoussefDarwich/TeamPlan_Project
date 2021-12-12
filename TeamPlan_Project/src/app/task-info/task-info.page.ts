@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { Task } from './../services/app-services.service';
+import { Task , AppServicesService } from './../services/app-services.service';
 import { Router } from '@angular/router';
+import {FileTransfer , FileTransferObject, FileUploadOptions} from '@ionic-native/file-transfer/ngx'
 
 @Component({
   selector: 'app-task-info',
@@ -11,10 +12,15 @@ import { Router } from '@angular/router';
 export class TaskInfoPage implements OnInit {
 
   currentTask:Task={'title': "", 'project_id' : 0 , 'id' : 0 , 'due_date': "" , 'description' : "",'completed':0, 'assigned_username': ""};
+  currentProjectAdmin:string="";
   isAssignedUser:boolean=false;
-  isCompleted:boolean=false;
+  isCompleted:number=0;
+  username:string;
 
-  constructor(private router:Router, private storage:Storage ) {
+  transferObject:FileTransferObject;
+  
+
+  constructor(private storage:Storage,private router: Router, private serv : AppServicesService) {
 
    }
 
@@ -28,16 +34,23 @@ export class TaskInfoPage implements OnInit {
     
     this.storage.get("currentTask").then( (val)=>{
       this.currentTask=val;
-      this.setIsAssigned();
-      this.setIsCompleted();
-
+      this.getProjectAdmin();
   });
 
 }
 
+  getProjectAdmin(){
+    this.storage.get("currentProject").then( (val)=>{
+      this.currentProjectAdmin=val;
+      this.setIsAssigned();
+      this.setIsCompleted();
+  });
+  }
+
   setIsAssigned(){
     this.storage.get("username").then((val)=>{
-      if(val==this.currentTask.assigned_username){
+      this.username =val;
+      if(this.username==this.currentTask.assigned_username){
         this.isAssignedUser=true;
       }
       else{
@@ -47,18 +60,37 @@ export class TaskInfoPage implements OnInit {
   }
 
   setIsCompleted(){
-    if(this.currentTask.completed==1){
-      this.isCompleted=true;
+    if(this.currentTask.completed==0){
+      this.isCompleted=0;
     }
-    else{
-      this.isCompleted=false;
+    else if(this.currentTask.completed==1){
+      this.isCompleted=1;
+    }
+    else if(this.currentTask.completed==-1){
+      this.isCompleted=-1
     }
   }
   onSubmit(file){
-    console.log(file.value.file_upload);
     const url = file.value.file_upload;
-
+    console.log(file.value)
+    // let fileData = new FormData();
+    // fileData.append('file',file,file.name);
     
+  }
+
+  deleteTask(){
+    let jsontask={
+      'task_id':this.currentTask.id
+    }
+    this.serv.deleteTask(jsontask).subscribe(res=>{ 
+
+      if(res['success_status'] == 'success'){
+        this.router.navigate(['home']);
+      }
+      else{
+        return "An error has occured";
+      }
+    });
   }
 
 

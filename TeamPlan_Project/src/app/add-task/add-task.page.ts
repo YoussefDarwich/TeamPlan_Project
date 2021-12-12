@@ -30,8 +30,9 @@ export class AddTaskPage implements OnInit {
     }
 
       this.serv.addTask(jsoninfo).subscribe(res=>{ 
-        console.log(res);
-        this.router.navigate(['home']);
+
+        if(res)
+          this.router.navigate(['home']);
     });
 
   }

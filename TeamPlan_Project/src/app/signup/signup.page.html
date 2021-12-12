@@ -1,0 +1,52 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-back-button color="dark">back</ion-back-button>
+    </ion-buttons>
+    <ion-title >Sign Up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    
+    
+      <div id="circles">
+        <div class="circle circle1"></div>
+        <div class="circle circle2"></div>
+        <div class="circle circle3"></div>
+      </div>
+    
+    
+      <form #creds="ngForm" (ngSubmit)="onSubmit(creds)">
+    
+        <ion-item class="textfield">
+          <ion-label color="light" position="floating" >Username</ion-label>
+          <ion-input ngModel name="Username"></ion-input>
+        </ion-item>
+
+        <ion-item class="textfield">
+          <ion-label color="light" position="floating" >Full Name</ion-label>
+          <ion-input type="text" ngModel name="Full_name"></ion-input>
+        </ion-item>
+    
+        <ion-item class="textfield">
+          <ion-label color="light" position="floating" >Password</ion-label>
+          <ion-input type="password" ngModel name="Password"></ion-input>
+        </ion-item>
+        
+        <ion-item class="textfield">
+          <ion-label color="light" position="floating" >Confirm Password</ion-label>
+          <ion-input type="password" ngModel name="Password_confirm"></ion-input>
+        </ion-item>
+    
+        <ion-item id="authMessage" *ngIf="showMessage" lines="none">
+          <span>{{errorMessage}}</span>
+        </ion-item>
+    
+        <ion-item lines="none">
+          <ion-button id="signup" type="ngSubmit">Sign Up</ion-button>
+        </ion-item>
+      </form>
+    
+    
+</ion-content>

@@ -4,6 +4,7 @@ import { User,Project,Task,AppServicesService} from './../services/app-services.
 import { Storage } from '@ionic/storage';
 import { PopoverController } from '@ionic/angular';
 import { PopoverComponent } from '../components/popover/popover.component'
+import { identity } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -28,46 +29,61 @@ export class HomePage implements OnInit{
   constructor(private  popoverController: PopoverController , private storage:Storage,private router: Router, private serv : AppServicesService) {
   }
 
-  // taken from the ionic documentation to create a popover
-  async presentPopover(ev: any) {
-    
-    const popover = await this.popoverController.create({
-      component: PopoverComponent,
-      event: ev,
-      translucent: true,
-    });
-    await popover.present();
-    // popover.addEventListener('click',()=>{
-    //   console.log("clickeddd");
-    // });
-    // popover.addEventListener('usernameOutput',($event)=>{
-    //   console.log("Value from home" + $event);
-    // })
-
-    // popover.addEventListener(,()=>{
-    //   console.log("test");
-    // })
-
-    return popover.onDidDismiss().then(
-      (data: any) => {
-        if (data) {
-          console.log(data);
-          // trigger here the method dependind on the popover response
-        }
-      });
-  }
-
   ngOnInit(){
 
+    console.log("hello from home");
     setTimeout(()=>
       this.storage.get("username").then( (val)=>{
         this.username=val;
 
         this.getAllProjects(this.username);
-      }),200);
-
-
+      }),300);
   }
+
+    // taken from the ionic documentation to create a popover
+    async memberPopover(ev: any) {
+    
+      const popover = await this.popoverController.create({
+        component: PopoverComponent,
+        componentProps:{
+          field:"Username",
+          type:"Member"
+        },
+        event: ev,
+        translucent: true,
+      });
+      await popover.present();
+  
+      return popover.onDidDismiss().then(
+        (data: any) => {
+          if (data) {
+            if(data.data!=null)
+              this.addMember(data.data.data);
+          }
+        });
+    }
+  
+    async projectPopover(ev: any) {
+      
+      const popover = await this.popoverController.create({
+        component: PopoverComponent,
+        componentProps:{
+          field:"Title",
+          type:"Project"
+        },
+        event: ev,
+        translucent: true,
+      });
+      await popover.present();
+  
+      return popover.onDidDismiss().then(
+        (data: any) => {
+          if (data) {
+            if(data.data!=null)
+              this.addProject(data.data.data);
+          }
+        });
+    }
 
   getAllProjects(user:string){
     let jsonuser = {
@@ -86,11 +102,19 @@ export class HomePage implements OnInit{
   }
 
   getAllTasks(project_id:number){
+    const today = new Date();
+    const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
     let jsonproject = {
       'project_id' : project_id
     }
     this.serv.getAllCards(jsonproject).subscribe((response) => {
       this.tasks=response;
+
+      // for(let task of this.tasks){
+      //   if(Date.parse(task.due_date) < Date.parse(date)){
+      //     task.completed=-1;
+      //   }
+      // }
     });
 
   }
@@ -104,7 +128,31 @@ export class HomePage implements OnInit{
     });
   }
 
-  getNameFromUsername(username){
+  addMember(username:string){
+
+    let jsoninfo = {
+      'username':username,
+      'project_id':this.activeproj.id
+    };
+
+    this.serv.addMember(jsoninfo).subscribe(res=>{ 
+        this.getAllMembers(this.activeproj.id);
+      });
+    }
+
+  addProject(project_title:string){
+
+      let jsoninfo = {
+        'username':this.username,
+        'title':project_title
+      };
+  
+      this.serv.addProject(jsoninfo).subscribe(res=>{ 
+          this.getAllProjects(this.username);
+        });
+      }
+
+  getNameFromUsername(username:string){
     for(let mem of this.members){
 
       if(mem.username==username){
@@ -141,7 +189,8 @@ export class HomePage implements OnInit{
         currenttask= task;
       }
     }
-    this.storage.set('currentTask', currenttask)
+    this.storage.set('currentTask', currenttask);
+    this.storage.set('currentProject', this.activeproj.admin_username);
     this.router.navigate(['task-info']);
   }
 
@@ -154,15 +203,10 @@ export class HomePage implements OnInit{
 
   }
 
-  addMember(){
-
-  }
-
 
   logOut(){
     this.storage.remove('username');
     this.storage.get("username").then((val)=>{
-      console.log(val);
     });
     this.router.navigate(['signin']);
   }

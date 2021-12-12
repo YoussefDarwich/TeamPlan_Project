@@ -64,6 +64,15 @@ ion-content{
     height: fit-content;
     margin-top: 20px;
 
+    #addproj{
+        background-color: var(--myWhite);
+        color: black;
+        padding: 5px 10px;
+        align-self: center;
+        border-radius: 5px;
+
+    }
+
     h2{
          color: black;
          font-size: 1em;
@@ -107,6 +116,7 @@ ion-content{
     --border-radius:6px;
     align-self: center;
     margin:auto;
+    cursor: pointer;
     // width: 100;
 }
 
