@@ -17,14 +17,14 @@ For the backend, the APIs must be placed in a folder accessible to the localhost
 ## Pages
 
 ### Main Page: Listing of all the projects, tasks, and assigned team members
-![Image not found](/ApplcationScreenshots/Mainpage.jpg?raw=true "Main Page")
+![Image not found](/ApplicationScreenshots/Mainpage.jpg?raw=true "Main Page")
 ### Add Task: Add task information to a specific project and assign to project member
-![Image not found](/ApplcationScreenshots/AddTask.jpg?raw=true "Main Page")
+![Image not found](/ApplicationScreenshots/AddTask.jpg?raw=true "Main Page")
 ### Task Objectives: View task information and objectives
-![Image not found](/ApplcationScreenshots/TaskObjectives.jpg?raw=true "Main Page")
+![Image not found](/ApplicationScreenshots/TaskObjectives.jpg?raw=true "Main Page")
 ### Task Status: Check if task is submitted, and download submitted file
-![Image not found](/ApplcationScreenshots/TaskStatus.jpg?raw=true "Main Page")
+![Image not found](/ApplicationScreenshots/TaskStatus.jpg?raw=true "Main Page")
 ### Sign in: Sign in to existing account
-![Image not found](/ApplcationScreenshots/Signin.jpg?raw=true "Main Page")
+![Image not found](/ApplicationScreenshots/Signin.jpg?raw=true "Main Page")
 ### Sign in: Register a new account
-![Image not found](/ApplcationScreenshots/SignUp.jpg?raw=true "Main Page")
+![Image not found](/ApplicationScreenshots/SignUp.jpg?raw=true "Main Page")
