@@ -1,6 +1,6 @@
 # TeamPlan Project
 This mobile app organizes tasks and deadlines in teams.
-This project was made as part of my Computer Science Bachelor's Degree.
+This project was made as part of my Computer Science Bachelor's Degree, with frontend and backend functionalities made by myself.
 
 ## Utilities
 The project uses ionic 6.18.1 for frontend with the Router, Storage, and HttpClient modules installed.
@@ -17,14 +17,19 @@ For the backend, the APIs must be placed in a folder accessible to the localhost
 ## Pages
 
 ### Main Page: Listing of all the projects, tasks, and assigned team members
-![Image not found](/ApplicationScreenshots/Mainpage.jpg?raw=true "Main Page")
+<img src="/ApplicationScreenshots/Mainpage.jpg" alt="Image not found." width="300">
+
 ### Add Task: Add task information to a specific project and assign to project member
-![Image not found](/ApplicationScreenshots/AddTask.jpg?raw=true "Main Page")
+<img src="/ApplicationScreenshots/AddTask.jpg" alt="Image not found." width="300">
+
 ### Task Objectives: View task information and objectives
-![Image not found](/ApplicationScreenshots/TaskObjectives.jpg?raw=true "Main Page")
+<img src="/ApplicationScreenshots/TaskObjectives.jpg" alt="Image not found." width="300">
+
 ### Task Status: Check if task is submitted, and download submitted file
-![Image not found](/ApplicationScreenshots/TaskStatus.jpg?raw=true "Main Page")
+<img src="/ApplicationScreenshots/TaskStatus.jpg" alt="Image not found." width="300">
+
 ### Sign in: Sign in to existing account
-![Image not found](/ApplicationScreenshots/Signin.jpg?raw=true "Main Page")
+<img src="/ApplicationScreenshots/Signin.jpg" alt="Image not found." width="300">
+
 ### Sign in: Register a new account
-![Image not found](/ApplicationScreenshots/SignUp.jpg?raw=true "Main Page")
+<img src="/ApplicationScreenshots/SignUp.jpg" alt="Image not found." width="300">
